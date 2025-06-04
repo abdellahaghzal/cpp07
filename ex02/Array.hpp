@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/04 07:56:43 by aaghzal           #+#    #+#             */
+/*   Updated: 2025/06/04 08:11:38 by aaghzal          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
@@ -7,78 +19,67 @@
 
 # define DEBUG true
 
-template <typename t_arr>
-class Array
-{
+template <typename T>
+class Array {
     private:
-        unsigned int length;
-        t_arr *arr;
+        size_t length;
+        T* arr;
     public:
         Array() :
         length(0),
-        arr(NULL)
-        {
+        arr(NULL) {
             if (DEBUG)
                 std::cout << "Array Default Constructor is called"
                           << std::endl;
         }
 
-        Array(unsigned int n) :
+        Array(size_t n) :
         length(n),
-        arr(new t_arr[n])
-        {
+        arr(new T[n]()) {
             if (DEBUG)
                 std::cout << "Array Assignment Constructor is called"
                           << std::endl;
         }
 
         Array(const Array& other) :
-        length(other.length)
-        {
+        length(other.length) {
             if (DEBUG)
                 std::cout << "Array Copy Constructor is called"
                           << std::endl;
-            this->arr = new t_arr[this->length];
-            for (unsigned int i = 0; i < this->length; i++)
-            {
+            this->arr = new T[this->length];
+            for (size_t i = 0; i < this->length; i++) {
                 this->arr[i] = other.arr[i];
             }
         }
 
-        Array& operator=(const Array& other)
-        {
+        Array& operator=(const Array& other) {
             if (DEBUG)
                 std::cout << "Array Assignment Operator is called"
                           << std::endl;
-            if (&other != this)
-            {
+            if (&other != this) {
                 this->length = other.length;
-                this->arr = new t_arr[this->length];
-                for (unsigned int i = 0; i < this->length; i++)
-                {
+                this->arr = new T[this->length];
+                for (size_t i = 0; i < this->length; i++) {
                     this->arr[i] = other.arr[i];
                 }
             }
             return (*this);
         }
 
-        ~Array()
-        {
+        ~Array() {
             if (DEBUG)
                 std::cout << "Array Destructor is called"
                           << std::endl;
             delete[] this->arr;
         }
 
-        t_arr& operator[](size_t index)
-        {
+        T& operator[](size_t index) {
             if (index >= length)
                 throw (std::exception());
             return arr[index];
         }
 
-        int size(void)
-        {
+        int size(void) {
             return (length);
         }
 };
