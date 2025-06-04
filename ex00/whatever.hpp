@@ -1,5 +1,17 @@
-#ifndef WHATAVER_HPP
-# define WHATAVER_HPP
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaghzal <aaghzal@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/04 07:57:03 by aaghzal           #+#    #+#             */
+/*   Updated: 2025/06/04 07:57:04 by aaghzal          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
 template <typename T>
 void swap(T& a, T& b)
